@@ -1,0 +1,57 @@
+.body {
+    position: relative;
+}
+*{
+    margin:0;
+    padding:0;
+}
+.nav-ul {
+    list-style-type: none;
+    position: fixed;
+    top: 100px;
+}
+
+.nav-ul li {
+    line-height: 50px;
+    width: 100px;
+    border-bottom: 1px solid silver;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    width: 80%;
+    position: absolute;
+    right: 0;
+    margin-right: 80px;
+}
+
+.on {
+    background: blue;
+}
+
+.md:nth-child(1) {
+    height: 300px;
+}
+
+.md:nth-child(2) {
+    height: 800px;
+}
+
+.md:nth-child(3) {
+    height: 400px;
+}
+
+.md:nth-child(4) {
+    height: 200px;
+}
+
+.md:nth-child(5) {
+    height: 100px;
+}
+
+.md:nth-child(6) {
+    height: 300px;
+}
