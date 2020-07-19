@@ -18,7 +18,6 @@
             break;
         }
     }
-    console.log(minNumber,maxScrollH);
     //记录点击的标签号
     let highlightNumber;
     //监听滚动的高度
@@ -32,10 +31,8 @@
             }
         }
         if(isEnd()){
-            console.log('end');
             highlight(elH.length-1);
             if(highlightNumber>minNumber){
-                console.log("111");
                 highlight(highlightNumber);
             }
         }
@@ -82,6 +79,11 @@
     //当点击标签时，页面滚动到相应的部分
     document.getElementById('nav-ul').addEventListener('click',function(e){
         let ob = e.target;
+        //如果点击的是a标签，找到它的父标签li
+        let nodeName = ob.nodeName.toLowerCase();
+        if(nodeName=='a'){
+            ob = ob.parentNode;
+        }
         let obs = Array.prototype.slice.call(document.getElementsByClassName('tab'),0);
         let id;
         //遍历找到点击的是第几个标签
@@ -91,18 +93,16 @@
             }
         });
         highlightNumber = id;
-        console.log(highlightNumber,minNumber);
         //当点击的标签大于滚动到底部的最小序号
         if(highlightNumber>minNumber){
-            console.log("ss");
             if(getDocumentScrollTop() == maxScrollH){
-                highlight(obs.length-1);
+                //如果滚动到底了，那么点了哪个就高亮哪个
+                highlight(highlightNumber);
             }else{
                 window.scrollTo(0,maxScrollH);
             }
         }else{
             window.scrollTo(0,elH[id]);
         }
-    })
-    //当页面滚动到底部时，点击标签，页面不滚动。
+    },true);
 })();
